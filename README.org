@@ -24,8 +24,8 @@ python3 main.py
   - [[https://store-scantec.com/Search/ProductView.aspx?partid=222567983][Scan Technology Inc. 4000M-DBU6]]
     - Scanning an ID results with the following as USB keyboard input:
       #+BEGIN_SRC sh
-        ;<"9-digit ID">=0249?
-        <"\n">
+        ;["9-digit ID"]=0249?
+        ["\n"]
       #+END_SRC
     - Scanner can be inaccurate at times, note scanning speed can't be too fast or too slow.
 *** IDs
