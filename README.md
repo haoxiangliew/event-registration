@@ -1,15 +1,15 @@
-- [[event-registration](https://github.com/haoxiangliew/event-registration)](#orgcefca26)
-  - [Installation](#org08bec4f)
-    - [Linux](#orga429fa6)
-    - [Windows](#orgd186d26)
-  - [Specifications](#orgd34d56d)
-    - [Scanner](#org30658c1)
-    - [IDs](#orgc9cedd3)
-    - [Application](#orgea209c9)
+- [[event-registration](https://github.com/haoxiangliew/event-registration)](#org80f8914)
+  - [Installation](#orgbf9574f)
+    - [Linux](#orgbfc777e)
+    - [Windows](#orgbc95af4)
+  - [Specifications](#org83d82ae)
+    - [Scanner](#org5590e46)
+    - [IDs](#org83c0429)
+    - [Application](#org1d24870)
 
 
 
-<a id="orgcefca26"></a>
+<a id="org80f8914"></a>
 
 # [event-registration](https://github.com/haoxiangliew/event-registration)
 
@@ -18,12 +18,12 @@ This is a custom app for Virgnia Tech student organizations to take in a spreads
 App was made specifically for [IEEE@VT](https://ieee.vt.edu)'s Happy Hour, hello there!
 
 
-<a id="org08bec4f"></a>
+<a id="orgbf9574f"></a>
 
 ## Installation
 
 
-<a id="orga429fa6"></a>
+<a id="orgbfc777e"></a>
 
 ### Linux
 
@@ -35,7 +35,7 @@ python3 main.py
 ```
 
 
-<a id="orgd186d26"></a>
+<a id="orgbc95af4"></a>
 
 ### Windows
 
@@ -43,12 +43,12 @@ python3 main.py
 -   Or use WSL
 
 
-<a id="orgd34d56d"></a>
+<a id="org83d82ae"></a>
 
 ## Specifications
 
 
-<a id="org30658c1"></a>
+<a id="org5590e46"></a>
 
 ### Scanner
 
@@ -58,12 +58,12 @@ python3 main.py
             
             ```sh
             ;<"9-digit ID">=0249?
-            
+            <"\n">
             ```
         -   Scanner can be inaccurate at times, note scanning speed can't be too fast or too slow.
 
 
-<a id="orgc9cedd3"></a>
+<a id="org83c0429"></a>
 
 ### IDs
 
@@ -72,7 +72,7 @@ python3 main.py
     -   If for some edge case, there are duplicate IDs, prompt for a name search of those entries.
 
 
-<a id="orgea209c9"></a>
+<a id="org1d24870"></a>
 
 ### Application
 
