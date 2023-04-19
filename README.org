@@ -3,6 +3,7 @@
 
 * [[https://github.com/haoxiangliew/event-registration][event-registration]]
 This is a custom app for Virgnia Tech student organizations to take in a spreadsheet and confirm the scanned individual is registered.
+App was made specifically for [[https://ieee.vt.edu][IEEE@VT]]'s Happy Hour, hello there!
 
 ** Installation
 *** Linux
