@@ -1,16 +1,17 @@
-- [[event-registration](https://github.com/haoxiangliew/event-registration)](#org05f21e5)
-  - [Installation](#orgb688707)
-    - [Prerequisites](#orgaa82d29)
-    - [Linux](#org1fe6d1a)
-    - [Windows](#orga1d04a2)
-  - [Specifications](#orga100706)
-    - [Scanner](#orge18e323)
-    - [IDs](#org55a5a6f)
-    - [Application](#org00de9af)
+- [[event-registration](https://github.com/haoxiangliew/event-registration)](#orge98b1c8)
+  - [Installation](#org816962e)
+    - [Prerequisites](#org51281bb)
+    - [Linux](#org9e57bde)
+    - [Windows](#orgcafe6e4)
+    - [MacOS](#org082d6cb)
+  - [Specifications](#orgcafd44d)
+    - [Scanner](#orgb0811fa)
+    - [IDs](#orgfb24464)
+    - [Application](#orgf674a9c)
 
 
 
-<a id="org05f21e5"></a>
+<a id="orge98b1c8"></a>
 
 # [event-registration](https://github.com/haoxiangliew/event-registration)
 
@@ -19,20 +20,23 @@ This is a custom app for Virgnia Tech student organizations to take in a spreads
 App was made specifically for [IEEE@VT](https://ieee.vt.edu)'s Happy Hour, hello there!
 
 
-<a id="orgb688707"></a>
+<a id="org816962e"></a>
 
 ## Installation
 
 
-<a id="orgaa82d29"></a>
+<a id="org51281bb"></a>
 
 ### Prerequisites
 
 -   Python 3+
 -   Make sure Python is configured for [TKinter](https://tkdocs.com/tutorial/install.html)
+    -   Linux: Search your repositories for python-tk / tkinter
+    -   Windows: Official Distribution
+    -   MacOS: Official Distribution / `brew install python-tk` (Homebrew)
 
 
-<a id="org1fe6d1a"></a>
+<a id="org9e57bde"></a>
 
 ### Linux
 
@@ -44,19 +48,26 @@ python3 main.py
 ```
 
 
-<a id="orga1d04a2"></a>
+<a id="orgcafe6e4"></a>
 
 ### Windows
 
 Using Python's shell, the Linux instructions should work perfectly
 
 
-<a id="orga100706"></a>
+<a id="org082d6cb"></a>
+
+### MacOS
+
+Same as above
+
+
+<a id="orgcafd44d"></a>
 
 ## Specifications
 
 
-<a id="orge18e323"></a>
+<a id="orgb0811fa"></a>
 
 ### Scanner
 
@@ -71,7 +82,7 @@ Using Python's shell, the Linux instructions should work perfectly
         -   Scanner can be inaccurate at times, note scanning speed can't be too fast or too slow.
 
 
-<a id="org55a5a6f"></a>
+<a id="orgfb24464"></a>
 
 ### IDs
 
@@ -80,7 +91,7 @@ Using Python's shell, the Linux instructions should work perfectly
     -   If for some edge case, there are duplicate IDs, prompt for a name search of those entries.
 
 
-<a id="org00de9af"></a>
+<a id="orgf674a9c"></a>
 
 ### Application
 

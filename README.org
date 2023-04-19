@@ -10,6 +10,9 @@ App was made specifically for [[https://ieee.vt.edu][IEEE@VT]]'s Happy Hour, hel
 *** Prerequisites
 - Python 3+
 - Make sure Python is configured for [[https://tkdocs.com/tutorial/install.html][TKinter]]
+  - Linux: Search your repositories for python-tk / tkinter
+  - Windows: Official Distribution
+  - MacOS: Official Distribution / ~brew install python-tk~ (Homebrew)
 *** Linux
 #+BEGIN_SRC sh
 python3 -m venv ./venv
@@ -19,6 +22,8 @@ python3 main.py
 #+END_SRC
 *** Windows
 Using Python's shell, the Linux instructions should work perfectly
+*** MacOS
+Same as above
 
 ** Specifications
 *** Scanner
