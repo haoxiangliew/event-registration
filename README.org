@@ -4,6 +4,18 @@
 * [[https://github.com/haoxiangliew/event-registration][event-registration]]
 This is a custom app for Virgnia Tech student organizations to take in a spreadsheet and confirm the scanned individual is registered.
 
+** Installation
+*** Linux
+#+BEGIN_SRC sh
+python3 -m venv ./venv
+source ./venv/bin/activate<.fish>
+pip3 install -r requirements.txt
+python3 main.py
+#+END_SRC
+*** Windows
+- TODO
+- Or use WSL
+
 ** Specifications
 *** Scanner
 - The scanner is sourced from thesource@vt.edu
@@ -29,15 +41,3 @@ tkinter
   - Should have no duplicate ID and names.
 - Filter input for scanner and manual input automatically.
 - ~tkinter~ popups can be dismissed quickly with ~<RET>~.
-
-** Installation
-*** Linux
-#+BEGIN_SRC sh
-python3 -m venv ./venv
-source ./venv/bin/activate<.fish>
-pip3 install -r requirements.txt
-python3 main.py
-#+END_SRC
-*** Windows
-- TODO
-- Or use WSL
