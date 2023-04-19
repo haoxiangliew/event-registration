@@ -1,15 +1,15 @@
-- [[event-registration](https://github.com/haoxiangliew/event-registration)](#org3f11ae5)
-  - [Installation](#org7cef0c3)
-    - [Linux](#orgd6cdeef)
-    - [Windows](#orgec78992)
-  - [Specifications](#org3d9b343)
-    - [Scanner](#orgf8b7c9f)
-    - [IDs](#org23ebe69)
-    - [Application](#org3bb26c9)
+- [[event-registration](https://github.com/haoxiangliew/event-registration)](#orga3e6efe)
+  - [Installation](#org297cbfd)
+    - [Linux](#org2476f01)
+    - [Windows](#org1207e19)
+  - [Specifications](#orga453deb)
+    - [Scanner](#orge7a11fe)
+    - [IDs](#orgba042f3)
+    - [Application](#org6abaf4e)
 
 
 
-<a id="org3f11ae5"></a>
+<a id="orga3e6efe"></a>
 
 # [event-registration](https://github.com/haoxiangliew/event-registration)
 
@@ -18,12 +18,12 @@ This is a custom app for Virgnia Tech student organizations to take in a spreads
 App was made specifically for [IEEE@VT](https://ieee.vt.edu)'s Happy Hour, hello there!
 
 
-<a id="org7cef0c3"></a>
+<a id="org297cbfd"></a>
 
 ## Installation
 
 
-<a id="orgd6cdeef"></a>
+<a id="org2476f01"></a>
 
 ### Linux
 
@@ -35,19 +35,19 @@ python3 main.py
 ```
 
 
-<a id="orgec78992"></a>
+<a id="org1207e19"></a>
 
 ### Windows
 
 Using Python's shell, the Linux instructions should work perfectly
 
 
-<a id="org3d9b343"></a>
+<a id="orga453deb"></a>
 
 ## Specifications
 
 
-<a id="orgf8b7c9f"></a>
+<a id="orge7a11fe"></a>
 
 ### Scanner
 
@@ -62,7 +62,7 @@ Using Python's shell, the Linux instructions should work perfectly
         -   Scanner can be inaccurate at times, note scanning speed can't be too fast or too slow.
 
 
-<a id="org23ebe69"></a>
+<a id="orgba042f3"></a>
 
 ### IDs
 
@@ -71,7 +71,7 @@ Using Python's shell, the Linux instructions should work perfectly
     -   If for some edge case, there are duplicate IDs, prompt for a name search of those entries.
 
 
-<a id="org3bb26c9"></a>
+<a id="org6abaf4e"></a>
 
 ### Application
 
@@ -80,7 +80,7 @@ Using Python's shell, the Linux instructions should work perfectly
     ```sh
     openpyxl
     pandas
-    tkinter
+    tk
     ```
     
     -   Takes in `input.xlsx`, with the first-row as categories.

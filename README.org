@@ -34,9 +34,9 @@ Using Python's shell, the Linux instructions should work perfectly
 *** Application
 **** Dependencies
 #+BEGIN_SRC sh
-openpyxl
-pandas
-tkinter
+  openpyxl
+  pandas
+  tk
 #+END_SRC
 - Takes in ~input.xlsx~, with the first-row as categories.
   - Should have no duplicate ID and names.
