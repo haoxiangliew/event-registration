@@ -15,8 +15,7 @@ pip3 install -r requirements.txt
 python3 main.py
 #+END_SRC
 *** Windows
-- TODO
-- Or use WSL
+Using Python's shell, the Linux instructions should work perfectly
 
 ** Specifications
 *** Scanner
