@@ -8,7 +8,7 @@ App was made specifically for [[https://ieee.vt.edu][IEEE@VT]]'s Happy Hour, hel
 
 ** Installation
 *** Prerequisites
-- Python 3+
+- [[https://www.python.org/downloads/][Python 3+]]
 - Make sure Python is configured for [[https://tkdocs.com/tutorial/install.html][TKinter]]
   - Linux: Search your repositories for python-tk / tkinter
   - Windows: Official Distribution

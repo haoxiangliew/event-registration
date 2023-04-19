@@ -1,17 +1,17 @@
-- [[event-registration](https://github.com/haoxiangliew/event-registration)](#orge98b1c8)
-  - [Installation](#org816962e)
-    - [Prerequisites](#org51281bb)
-    - [Linux](#org9e57bde)
-    - [Windows](#orgcafe6e4)
-    - [MacOS](#org082d6cb)
-  - [Specifications](#orgcafd44d)
-    - [Scanner](#orgb0811fa)
-    - [IDs](#orgfb24464)
-    - [Application](#orgf674a9c)
+- [[event-registration](https://github.com/haoxiangliew/event-registration)](#org456ef46)
+  - [Installation](#orgd09eb68)
+    - [Prerequisites](#orga9971f3)
+    - [Linux](#org7774733)
+    - [Windows](#org915e3c7)
+    - [MacOS](#orgf12b857)
+  - [Specifications](#org70e5574)
+    - [Scanner](#orgc2daa0b)
+    - [IDs](#org37dbf37)
+    - [Application](#orgba89501)
 
 
 
-<a id="orge98b1c8"></a>
+<a id="org456ef46"></a>
 
 # [event-registration](https://github.com/haoxiangliew/event-registration)
 
@@ -20,23 +20,23 @@ This is a custom app for Virgnia Tech student organizations to take in a spreads
 App was made specifically for [IEEE@VT](https://ieee.vt.edu)'s Happy Hour, hello there!
 
 
-<a id="org816962e"></a>
+<a id="orgd09eb68"></a>
 
 ## Installation
 
 
-<a id="org51281bb"></a>
+<a id="orga9971f3"></a>
 
 ### Prerequisites
 
--   Python 3+
+-   [Python 3+](https://www.python.org/downloads/)
 -   Make sure Python is configured for [TKinter](https://tkdocs.com/tutorial/install.html)
     -   Linux: Search your repositories for python-tk / tkinter
     -   Windows: Official Distribution
     -   MacOS: Official Distribution / `brew install python-tk` (Homebrew)
 
 
-<a id="org9e57bde"></a>
+<a id="org7774733"></a>
 
 ### Linux
 
@@ -48,26 +48,26 @@ python3 main.py
 ```
 
 
-<a id="orgcafe6e4"></a>
+<a id="org915e3c7"></a>
 
 ### Windows
 
 Using Python's shell, the Linux instructions should work perfectly
 
 
-<a id="org082d6cb"></a>
+<a id="orgf12b857"></a>
 
 ### MacOS
 
 Same as above
 
 
-<a id="orgcafd44d"></a>
+<a id="org70e5574"></a>
 
 ## Specifications
 
 
-<a id="orgb0811fa"></a>
+<a id="orgc2daa0b"></a>
 
 ### Scanner
 
@@ -82,7 +82,7 @@ Same as above
         -   Scanner can be inaccurate at times, note scanning speed can't be too fast or too slow.
 
 
-<a id="orgfb24464"></a>
+<a id="org37dbf37"></a>
 
 ### IDs
 
@@ -91,7 +91,7 @@ Same as above
     -   If for some edge case, there are duplicate IDs, prompt for a name search of those entries.
 
 
-<a id="orgf674a9c"></a>
+<a id="orgba89501"></a>
 
 ### Application
 
