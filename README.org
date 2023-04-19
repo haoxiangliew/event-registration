@@ -7,10 +7,13 @@ This is a custom app for Virgnia Tech student organizations to take in a spreads
 App was made specifically for [[https://ieee.vt.edu][IEEE@VT]]'s Happy Hour, hello there!
 
 ** Installation
+*** Prerequisites
+- Python 3+
+- Make sure Python is configured for [[https://tkdocs.com/tutorial/install.html][TKinter]]
 *** Linux
 #+BEGIN_SRC sh
 python3 -m venv ./venv
-source ./venv/bin/activate<.fish>
+source ./venv/bin/activate
 pip3 install -r requirements.txt
 python3 main.py
 #+END_SRC

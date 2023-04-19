@@ -1,15 +1,16 @@
-- [[event-registration](https://github.com/haoxiangliew/event-registration)](#orga3e6efe)
-  - [Installation](#org297cbfd)
-    - [Linux](#org2476f01)
-    - [Windows](#org1207e19)
-  - [Specifications](#orga453deb)
-    - [Scanner](#orge7a11fe)
-    - [IDs](#orgba042f3)
-    - [Application](#org6abaf4e)
+- [[event-registration](https://github.com/haoxiangliew/event-registration)](#org05f21e5)
+  - [Installation](#orgb688707)
+    - [Prerequisites](#orgaa82d29)
+    - [Linux](#org1fe6d1a)
+    - [Windows](#orga1d04a2)
+  - [Specifications](#orga100706)
+    - [Scanner](#orge18e323)
+    - [IDs](#org55a5a6f)
+    - [Application](#org00de9af)
 
 
 
-<a id="orga3e6efe"></a>
+<a id="org05f21e5"></a>
 
 # [event-registration](https://github.com/haoxiangliew/event-registration)
 
@@ -18,36 +19,44 @@ This is a custom app for Virgnia Tech student organizations to take in a spreads
 App was made specifically for [IEEE@VT](https://ieee.vt.edu)'s Happy Hour, hello there!
 
 
-<a id="org297cbfd"></a>
+<a id="orgb688707"></a>
 
 ## Installation
 
 
-<a id="org2476f01"></a>
+<a id="orgaa82d29"></a>
+
+### Prerequisites
+
+-   Python 3+
+-   Make sure Python is configured for [TKinter](https://tkdocs.com/tutorial/install.html)
+
+
+<a id="org1fe6d1a"></a>
 
 ### Linux
 
 ```sh
 python3 -m venv ./venv
-source ./venv/bin/activate<.fish>
+source ./venv/bin/activate
 pip3 install -r requirements.txt
 python3 main.py
 ```
 
 
-<a id="org1207e19"></a>
+<a id="orga1d04a2"></a>
 
 ### Windows
 
 Using Python's shell, the Linux instructions should work perfectly
 
 
-<a id="orga453deb"></a>
+<a id="orga100706"></a>
 
 ## Specifications
 
 
-<a id="orge7a11fe"></a>
+<a id="orge18e323"></a>
 
 ### Scanner
 
@@ -62,7 +71,7 @@ Using Python's shell, the Linux instructions should work perfectly
         -   Scanner can be inaccurate at times, note scanning speed can't be too fast or too slow.
 
 
-<a id="orgba042f3"></a>
+<a id="org55a5a6f"></a>
 
 ### IDs
 
@@ -71,7 +80,7 @@ Using Python's shell, the Linux instructions should work perfectly
     -   If for some edge case, there are duplicate IDs, prompt for a name search of those entries.
 
 
-<a id="org6abaf4e"></a>
+<a id="org00de9af"></a>
 
 ### Application
 
