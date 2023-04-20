@@ -15,15 +15,20 @@ App was made specifically for [[https://ieee.vt.edu][IEEE@VT]]'s Happy Hour, hel
   - MacOS: Official Distribution / ~brew install python-tk~ (Homebrew)
 *** Linux
 #+BEGIN_SRC sh
-python3 -m venv ./venv
-source ./venv/bin/activate
-pip3 install -r requirements.txt
-python3 main.py
+  python3 -m venv ./venv
+  source ./venv/bin/activate
+  pip3 install -r requirements.txt
+  python3 main.py
 #+END_SRC
 *** Windows
-Using Python's shell, the Linux instructions should work perfectly
+#+BEGIN_SRC sh
+  python -m venv ./venv
+  .\venv\Scripts\Activate.ps1
+  pip install -r requirements.txt
+  python main.py
+#+END_SRC
 *** MacOS
-Same as above
+Using the shell, the Linux instructions should work perfectly
 
 ** Specifications
 *** Scanner
