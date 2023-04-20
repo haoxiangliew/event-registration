@@ -124,6 +124,7 @@ if check_for_duplicates():
                         if any(matching_rows["Registered"] == "Yes"):
                             multiple_names = ", ".join(matching_rows["Name"].values)
                             display_already_registered_error(multiple_names, id_number)
+                            continue
                         else:
                             print(
                                 "Duplicate ID found. Please enter the name for a more accurate search."
