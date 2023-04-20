@@ -120,8 +120,8 @@ if check_for_duplicates():
                     display_id_not_found_error(id_number)
                 else:
                     if len(matching_rows) > 1:
-                        # Check if all matching rows are already registered
-                        if all(matching_rows["Registered"] == "Yes"):
+                        # Check if any matching row is already registered
+                        if any(matching_rows["Registered"] == "Yes"):
                             multiple_names = ", ".join(matching_rows["Name"].values)
                             display_already_registered_error(multiple_names, id_number)
                         else:
@@ -148,6 +148,8 @@ if check_for_duplicates():
                     if registered != "Yes":
                         display_name_popup(name, id_number, tickets)
                         mark_as_registered(row_index)
+                    else:
+                        display_already_registered_error(name, id_number)
 
             except ValueError:
                 print("Invalid input. Please enter a valid ID.")
