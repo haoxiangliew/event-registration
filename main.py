@@ -98,12 +98,14 @@ def display_already_registered_error(name, id_number):
 
 def display_id_not_found_error(id_number):
     with TkinterContext() as window:
-        center_window(window)
-        window.bell()
-        messagebox.showerror(
-            "Error", f"Cannot find ID number: {id_number}", parent=window
-        )
-        window.destroy()
+        if window.winfo_exists():
+            center_window(window)
+            window.bell()
+            messagebox.showerror(
+                "Error",
+                f"ID: {id_number}\nError: ID not found!",
+                parent=window,
+            )
 
 
 def main():

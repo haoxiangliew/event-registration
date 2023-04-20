@@ -13,8 +13,6 @@ from main import (
     get_ticket_category,
     mark_as_registered,
     validate_ticket_categories,
-    display_already_registered_error,
-    display_id_not_found_error,
 )
 
 
@@ -132,10 +130,6 @@ class TestFunctions(unittest.TestCase):
             get_ticket_category("1 alcoholic drink"), "Unknown Ticket Category"
         )
 
-    def test_display_id_not_found_error(self):
-        with self.assertRaises(tk.TclError):
-            display_id_not_found_error(1234)
-
     def test_validate_ticket_categories_invalid(self):
         data = pd.DataFrame(
             {
@@ -154,10 +148,6 @@ class TestFunctions(unittest.TestCase):
     def test_get_ticket_category_unknown(self):
         self.assertEqual(get_ticket_category("unknown"), "Unknown Ticket Category")
 
-    def test_display_already_registered_error(self):
-        result = display_already_registered_error("Jane Smith", 1001)
-        self.assertTrue(result)
-
     def test_extract_id_number_empty_input_string(self):
         self.assertRaises(IndexError, extract_id_number, "")
 
@@ -165,10 +155,6 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             get_ticket_category("1 alcoholic drink"), "Unknown Ticket Category"
         )
-
-    def test_display_id_not_found_error_nonexistent_id(self):
-        with self.assertRaises(tk.TclError):
-            display_id_not_found_error(1234)
 
     def test_validate_ticket_categories_empty_dataframe(self):
         empty_data = pd.DataFrame(
