@@ -11,7 +11,7 @@ class TkinterContext:
     def __enter__(self):
         return self.window
 
-    def __exit__(self, exc_type, exc_val, exc_tb):
+    def __exit__(self):
         self.window.destroy()
 
 
@@ -88,11 +88,12 @@ def display_already_registered_error(name, id_number):
     with TkinterContext() as window:
         center_window(window)
         window.bell()
-        messagebox.showerror(
+        result = messagebox.showerror(
             "Error",
             f"ID: {id_number}\nName: {name}\nError: Already registered!",
             parent=window,
         )
+        return result
 
 
 def display_id_not_found_error(id_number):

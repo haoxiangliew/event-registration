@@ -1,7 +1,6 @@
 import unittest
 import pandas as pd
 import tkinter as tk
-from tkinter import messagebox
 
 import re
 
@@ -14,7 +13,7 @@ class TkinterContext:
     def __enter__(self):
         return self.window
 
-    def __exit__(self, exc_type, exc_val, exc_tb):
+    def __exit__(self):
         self.window.destroy()
 
 
@@ -167,18 +166,27 @@ class TestFunctions(unittest.TestCase):
     def test_get_ticket_category_unknown(self):
         self.assertEqual(get_ticket_category("unknown"), "Unknown Ticket Category")
 
-    def display_already_registered_error(self, name, id_number):
-        window = tk.Tk()
-        try:
-            center_window(window)
-            window.bell()
-            messagebox.showerror(
-                "Error",
-                f"ID: {id_number}\nName: {name}\nError: Already registered!",
-                parent=window,
-            )
-        finally:
-            window.destroy()
+    def test_display_already_registered_error(self):
+        result = display_already_registered_error("Jane Smith", 1001)
+        self.assertTrue(result)
+
+    def test_extract_id_number_empty_input_string(self):
+        self.assertRaises(IndexError, extract_id_number, "")
+
+    def test_get_ticket_category_unsupported_category(self):
+        self.assertEqual(
+            get_ticket_category("1 alcoholic drink"), "Unknown Ticket Category"
+        )
+
+    def test_display_id_not_found_error_nonexistent_id(self):
+        with self.assertRaises(tk.TclError):
+            display_id_not_found_error(1234)
+
+    def test_validate_ticket_categories_empty_dataframe(self):
+        empty_data = pd.DataFrame(
+            columns=["ID Number", "Name", "Registered", "Tickets"]
+        )
+        self.assertEqual(validate_ticket_categories(empty_data), -1)
 
     def test_extract_id_number_no_input(self):
         with self.assertRaises(IndexError):
