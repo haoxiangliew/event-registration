@@ -1,17 +1,17 @@
-- [[event-registration](https://github.com/haoxiangliew/event-registration)](#org5181d1c)
-  - [Installation](#org12e29e7)
-    - [Prerequisites](#org4975cd0)
-    - [Linux](#org5e0accc)
-    - [Windows](#orgdcd43e3)
-    - [MacOS](#orga23afb8)
-  - [Specifications](#org6158efb)
-    - [Scanner](#org2f7fd54)
-    - [IDs](#orgfc84881)
-    - [Application](#orgb6b12e0)
+- [[event-registration](https://github.com/haoxiangliew/event-registration)](#org6889541)
+  - [Installation](#orgc95615f)
+    - [Prerequisites](#orga79f1ae)
+    - [Linux](#org7eee04e)
+    - [Windows](#org85681e9)
+    - [MacOS](#org6b56557)
+  - [Specifications](#orgd154535)
+    - [Scanner](#org4040211)
+    - [IDs](#orgd3662e5)
+    - [Application](#org5b70b51)
 
 
 
-<a id="org5181d1c"></a>
+<a id="org6889541"></a>
 
 # [event-registration](https://github.com/haoxiangliew/event-registration)
 
@@ -20,12 +20,12 @@ This is a custom app for Virgnia Tech student organizations to take in a spreads
 App was made specifically for [IEEE@VT](https://ieee.vt.edu)'s Happy Hour, hello there!
 
 
-<a id="org12e29e7"></a>
+<a id="orgc95615f"></a>
 
 ## Installation
 
 
-<a id="org4975cd0"></a>
+<a id="orga79f1ae"></a>
 
 ### Prerequisites
 
@@ -36,7 +36,7 @@ App was made specifically for [IEEE@VT](https://ieee.vt.edu)'s Happy Hour, hello
     -   MacOS: Official Distribution / `brew install python-tk` (Homebrew)
 
 
-<a id="org5e0accc"></a>
+<a id="org7eee04e"></a>
 
 ### Linux
 
@@ -48,7 +48,7 @@ python3 main.py
 ```
 
 
-<a id="orgdcd43e3"></a>
+<a id="org85681e9"></a>
 
 ### Windows
 
@@ -60,19 +60,19 @@ python main.py
 ```
 
 
-<a id="orga23afb8"></a>
+<a id="org6b56557"></a>
 
 ### MacOS
 
 Using the shell, the Linux instructions should work perfectly
 
 
-<a id="org6158efb"></a>
+<a id="orgd154535"></a>
 
 ## Specifications
 
 
-<a id="org2f7fd54"></a>
+<a id="org4040211"></a>
 
 ### Scanner
 
@@ -81,13 +81,13 @@ Using the shell, the Linux instructions should work perfectly
         -   Scanning an ID results with the following as USB keyboard input:
             
             ```sh
-            ;["9-digit ID"]=0249?
-            ["\n"]
+            ;"9-digit ID"=0249?
+            "\n"
             ```
         -   Scanner can be inaccurate at times, note scanning speed can't be too fast or too slow.
 
 
-<a id="orgfc84881"></a>
+<a id="orgd3662e5"></a>
 
 ### IDs
 
@@ -96,7 +96,7 @@ Using the shell, the Linux instructions should work perfectly
     -   If for some edge case, there are duplicate IDs, prompt for a name search of those entries.
 
 
-<a id="orgb6b12e0"></a>
+<a id="org5b70b51"></a>
 
 ### Application
 
