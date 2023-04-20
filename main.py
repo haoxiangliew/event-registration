@@ -86,7 +86,9 @@ if check_for_duplicates():
             id_number = extract_id_number(input_str)
             matching_rows = find_name_by_id(id_number)
 
-            if not matching_rows.empty:
+            if matching_rows.empty:
+                display_id_not_found_error(id_number)
+            else:
                 if len(matching_rows) > 1:
                     # Check if all matching rows are already registered
                     if all(matching_rows["Registered"] == "Yes"):
@@ -116,8 +118,7 @@ if check_for_duplicates():
                 if registered != "Yes":
                     display_name_popup(name, id_number, tickets)
                     mark_as_registered(row_index)
-            else:
-                display_id_not_found_error(id_number)
+
         except ValueError:
             print("Invalid input. Please enter a valid ID.")
         except KeyboardInterrupt:

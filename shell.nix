@@ -3,7 +3,7 @@
 { pkgs ? import <nixpkgs> { } }:
 
 pkgs.mkShell rec {
-  buildInputs = [ pkgs.python3 pkgs.zlib ];
+  buildInputs = [ pkgs.python3 pkgs.python3Packages.tkinter pkgs.zlib ];
   shellHook = ''
     export LD_LIBRARY_PATH="${
       pkgs.lib.makeLibraryPath buildInputs
