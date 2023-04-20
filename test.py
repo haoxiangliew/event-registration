@@ -5,18 +5,6 @@ import tkinter as tk
 import re
 
 
-class TkinterContext:
-    def __init__(self):
-        self.window = tk.Tk()
-        self.window.withdraw()
-
-    def __enter__(self):
-        return self.window
-
-    def __exit__(self):
-        self.window.destroy()
-
-
 from main import (
     center_window,
     check_for_duplicates,
