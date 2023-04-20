@@ -40,13 +40,37 @@ def center_window(window):
     window.geometry(f"{width}x{height}+{x}+{y}")
 
 
+def get_ticket_category(tickets):
+    if tickets == "2 alcoholic drink tickets":
+        return "2 Alcoholic Tickets"
+    elif tickets == "1 non-alcoholic drink and 1 alcoholic drink":
+        return "1 Alcoholic and 1 Non-Alcoholic Tickets"
+    elif tickets == "2 non-alcoholic drink tickets":
+        return "2 Non-Alcoholic Tickets"
+    else:
+        return "Unknown Ticket Category"
+
+
+def validate_ticket_categories():
+    valid_categories = [
+        "2 alcoholic drink tickets",
+        "1 non-alcoholic drink and 1 alcoholic drink",
+        "2 non-alcoholic drink tickets",
+    ]
+    for index, category in enumerate(data["Tickets"]):
+        if category not in valid_categories:
+            return index
+    return -1
+
+
 def display_name_popup(name, id_number, tickets):
     window = tk.Tk()
     window.withdraw()
     center_window(window)
+    ticket_category = get_ticket_category(tickets)
     messagebox.showinfo(
-        "ID, Name, Registered Status, and Tickets",
-        f"ID: {id_number}\nName: {name}\nRegistered: Yes\nTickets: {tickets}",
+        "Info",
+        f"ID: {id_number}\nName: {name}\nRegistered: Yes\n{ticket_category}",
         parent=window,
     )
     window.destroy()
@@ -80,50 +104,56 @@ data = pd.read_excel(file_name, engine="openpyxl")
 
 # Continuously take ID number input and display the corresponding name or error popup
 if check_for_duplicates():
-    while True:
-        try:
-            input_str = input("Enter an ID number: ")
-            id_number = extract_id_number(input_str)
-            matching_rows = find_name_by_id(id_number)
+    invalid_category_index = validate_ticket_categories()
+    if invalid_category_index != -1:
+        print(
+            f"Error: Invalid ticket category found at line {invalid_category_index + 2}. Please fix the input file."
+        )
+    else:
+        while True:
+            try:
+                input_str = input("Enter an ID number: ")
+                id_number = extract_id_number(input_str)
+                matching_rows = find_name_by_id(id_number)
 
-            if matching_rows.empty:
-                display_id_not_found_error(id_number)
-            else:
-                if len(matching_rows) > 1:
-                    # Check if all matching rows are already registered
-                    if all(matching_rows["Registered"] == "Yes"):
-                        multiple_names = ", ".join(matching_rows["Name"].values)
-                        display_already_registered_error(multiple_names, id_number)
-                    else:
-                        print(
-                            "Duplicate ID found. Please enter the name for a more accurate search."
-                        )
-                        name_input = input("Enter the name: ")
-                        matching_rows = matching_rows.loc[
-                            matching_rows["Name"] == name_input
-                        ]
+                if matching_rows.empty:
+                    display_id_not_found_error(id_number)
+                else:
+                    if len(matching_rows) > 1:
+                        # Check if all matching rows are already registered
+                        if all(matching_rows["Registered"] == "Yes"):
+                            multiple_names = ", ".join(matching_rows["Name"].values)
+                            display_already_registered_error(multiple_names, id_number)
+                        else:
+                            print(
+                                "Duplicate ID found. Please enter the name for a more accurate search."
+                            )
+                            name_input = input("Enter the name: ")
+                            matching_rows = matching_rows.loc[
+                                matching_rows["Name"] == name_input
+                            ]
 
-                        if matching_rows.empty:
-                            print("No matching name found for the given ID.")
-                            continue
+                            if matching_rows.empty:
+                                print("No matching name found for the given ID.")
+                                continue
 
-                row = matching_rows.iloc[0]
-                row_index, name, registered, tickets = (
-                    row.name,
-                    row["Name"],
-                    row["Registered"],
-                    row["Tickets"],
-                )
+                    row = matching_rows.iloc[0]
+                    row_index, name, registered, tickets = (
+                        row.name,
+                        row["Name"],
+                        row["Registered"],
+                        row["Tickets"],
+                    )
 
-                if registered != "Yes":
-                    display_name_popup(name, id_number, tickets)
-                    mark_as_registered(row_index)
+                    if registered != "Yes":
+                        display_name_popup(name, id_number, tickets)
+                        mark_as_registered(row_index)
 
-        except ValueError:
-            print("Invalid input. Please enter a valid ID.")
-        except KeyboardInterrupt:
-            print("\nExiting the program...")
-            break
+            except ValueError:
+                print("Invalid input. Please enter a valid ID.")
+            except KeyboardInterrupt:
+                print("\nExiting the program...")
+                break
 else:
     window = tk.Tk()
     window.withdraw()
