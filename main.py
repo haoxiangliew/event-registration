@@ -120,8 +120,8 @@ if check_for_duplicates():
                     display_id_not_found_error(id_number)
                 else:
                     if len(matching_rows) > 1:
-                        # Check if any matching row is already registered
-                        if any(matching_rows["Registered"] == "Yes"):
+                        # Check if all matching rows are already registered
+                        if all(matching_rows["Registered"] == "Yes"):
                             multiple_names = ", ".join(matching_rows["Name"].values)
                             display_already_registered_error(multiple_names, id_number)
                             continue
