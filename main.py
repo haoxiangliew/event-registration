@@ -3,7 +3,19 @@ import tkinter as tk
 from tkinter import messagebox
 
 
-def check_for_duplicates():
+class TkinterContext:
+    def __init__(self):
+        self.window = tk.Tk()
+        self.window.withdraw()
+
+    def __enter__(self):
+        return self.window
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.window.destroy()
+
+
+def check_for_duplicates(data):
     duplicate_ids = data.duplicated(subset=["ID Number"], keep=False)
     duplicate_names = data.duplicated(subset=["Name"], keep=False)
     if duplicate_ids.any() and duplicate_names.any():
@@ -22,11 +34,11 @@ def extract_id_number(input_str):
     return int(id_number_str)
 
 
-def find_name_by_id(id_number):
+def find_name_by_id(data, id_number):
     return data.loc[data["ID Number"] == id_number]
 
 
-def mark_as_registered(row_index):
+def mark_as_registered(data, file_name, row_index):
     data.at[row_index, "Registered"] = "Yes"
     data.to_excel(file_name, index=False, engine="openpyxl")
 
@@ -41,17 +53,15 @@ def center_window(window):
 
 
 def get_ticket_category(tickets):
-    if tickets == "2 alcoholic drink tickets":
-        return "2 Alcoholic Tickets"
-    elif tickets == "1 non-alcoholic drink and 1 alcoholic drink":
-        return "1 Alcoholic and 1 Non-Alcoholic Tickets"
-    elif tickets == "2 non-alcoholic drink tickets":
-        return "2 Non-Alcoholic Tickets"
-    else:
-        return "Unknown Ticket Category"
+    ticket_categories = {
+        "2 alcoholic drink tickets": "2 Alcoholic Tickets",
+        "1 non-alcoholic drink and 1 alcoholic drink": "1 Alcoholic and 1 Non-Alcoholic Tickets",
+        "2 non-alcoholic drink tickets": "2 Non-Alcoholic Tickets",
+    }
+    return ticket_categories.get(tickets, "Unknown Ticket Category")
 
 
-def validate_ticket_categories():
+def validate_ticket_categories(data):
     valid_categories = [
         "2 alcoholic drink tickets",
         "1 non-alcoholic drink and 1 alcoholic drink",
@@ -64,107 +74,106 @@ def validate_ticket_categories():
 
 
 def display_name_popup(name, id_number, tickets):
-    window = tk.Tk()
-    window.withdraw()
-    center_window(window)
-    ticket_category = get_ticket_category(tickets)
-    messagebox.showinfo(
-        "Info",
-        f"ID: {id_number}\nName: {name}\nRegistered: Yes\n{ticket_category}",
-        parent=window,
-    )
-    window.destroy()
+    with TkinterContext() as window:
+        center_window(window)
+        ticket_category = get_ticket_category(tickets)
+        messagebox.showinfo(
+            "Info",
+            f"ID: {id_number}\nName: {name}\nRegistered: Yes\n{ticket_category}",
+            parent=window,
+        )
 
 
 def display_already_registered_error(name, id_number):
-    window = tk.Tk()
-    window.withdraw()
-    center_window(window)
-    window.bell()
-    messagebox.showerror(
-        "Error",
-        f"ID: {id_number}\nName: {name}\nError: Already registered!",
-        parent=window,
-    )
-    window.destroy()
+    with TkinterContext() as window:
+        center_window(window)
+        window.bell()
+        messagebox.showerror(
+            "Error",
+            f"ID: {id_number}\nName: {name}\nError: Already registered!",
+            parent=window,
+        )
 
 
 def display_id_not_found_error(id_number):
-    window = tk.Tk()
-    window.withdraw()
-    center_window(window)
-    window.bell()
-    messagebox.showerror("Error", f"Cannot find ID number: {id_number}", parent=window)
-    window.destroy()
+    with TkinterContext() as window:
+        center_window(window)
+        window.bell()
+        messagebox.showerror(
+            "Error", f"Cannot find ID number: {id_number}", parent=window
+        )
+        window.destroy()
 
 
-# Parse the XLSX file
-file_name = "input.xlsx"
-data = pd.read_excel(file_name, engine="openpyxl")
+def main():
+    file_name = "input.xlsx"
+    data = pd.read_excel(file_name, engine="openpyxl")
 
-# Continuously take ID number input and display the corresponding name or error popup
-if check_for_duplicates():
-    invalid_category_index = validate_ticket_categories()
+    if not check_for_duplicates(data):
+        with TkinterContext() as window:
+            center_window(window)
+            window.bell()
+            messagebox.showerror(
+                "Error",
+                "Please fix the duplicate entries and restart the program.",
+                parent=window,
+            )
+        return
+
+    invalid_category_index = validate_ticket_categories(data)
     if invalid_category_index != -1:
         print(
             f"Error: Invalid ticket category found at line {invalid_category_index + 2}. Please fix the input file."
         )
-    else:
-        while True:
-            try:
-                input_str = input("Enter an ID number: ")
-                id_number = extract_id_number(input_str)
-                matching_rows = find_name_by_id(id_number)
+        return
 
-                if matching_rows.empty:
-                    display_id_not_found_error(id_number)
-                else:
-                    if len(matching_rows) > 1:
-                        # Check if all matching rows are already registered
-                        if all(matching_rows["Registered"] == "Yes"):
-                            multiple_names = ", ".join(matching_rows["Name"].values)
-                            display_already_registered_error(multiple_names, id_number)
-                            continue
-                        else:
-                            print(
-                                "Duplicate ID found. Please enter the name for a more accurate search."
-                            )
-                            name_input = input("Enter the name: ")
-                            matching_rows = matching_rows.loc[
-                                matching_rows["Name"] == name_input
-                            ]
+    while True:
+        try:
+            input_str = input("Enter an ID number: ")
+            id_number = extract_id_number(input_str)
+            matching_rows = find_name_by_id(data, id_number)
 
-                            if matching_rows.empty:
-                                print("No matching name found for the given ID.")
-                                continue
-
-                    row = matching_rows.iloc[0]
-                    row_index, name, registered, tickets = (
-                        row.name,
-                        row["Name"],
-                        row["Registered"],
-                        row["Tickets"],
-                    )
-
-                    if registered != "Yes":
-                        display_name_popup(name, id_number, tickets)
-                        mark_as_registered(row_index)
+            if matching_rows.empty:
+                display_id_not_found_error(id_number)
+            else:
+                if len(matching_rows) > 1:
+                    if all(matching_rows["Registered"] == "Yes"):
+                        multiple_names = ", ".join(matching_rows["Name"].values)
+                        display_already_registered_error(multiple_names, id_number)
+                        continue
                     else:
-                        display_already_registered_error(name, id_number)
+                        print(
+                            "Duplicate ID found. Please enter the name for a more accurate search."
+                        )
+                        name_input = input("Enter the name: ")
+                        matching_rows = matching_rows.loc[
+                            matching_rows["Name"] == name_input
+                        ]
 
-            except ValueError:
-                print("Invalid input. Please enter a valid ID.")
-            except KeyboardInterrupt:
-                print("\nExiting the program...")
-                break
-else:
-    window = tk.Tk()
-    window.withdraw()
-    center_window(window)
-    window.bell()
-    messagebox.showerror(
-        "Error",
-        "Please fix the duplicate entries and restart the program.",
-        parent=window,
-    )
-    window.destroy()
+                        if matching_rows.empty:
+                            print("No matching name found for the given ID.")
+                            continue
+
+                row = matching_rows.iloc[0]
+                row_index, name, registered, tickets = (
+                    row.name,
+                    row["Name"],
+                    row["Registered"],
+                    row["Tickets"],
+                )
+
+                if registered != "Yes":
+                    display_name_popup(name, id_number, tickets)
+                    mark_as_registered(data, file_name, row_index)
+                else:
+                    display_already_registered_error(name, id_number)
+
+        except ValueError:
+            print("Invalid input. Please enter a valid ID.")
+        except KeyboardInterrupt:
+            print("\nExiting the program...")
+            break
+
+
+if __name__ == "__main__":
+    main()
