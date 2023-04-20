@@ -1,6 +1,7 @@
 import pandas as pd
 import tkinter as tk
 from tkinter import messagebox
+from pathlib import Path
 
 
 class TkinterContext:
@@ -109,8 +110,11 @@ def display_id_not_found_error(id_number):
 
 
 def main():
-    file_name = "input.xlsx"
-    data = pd.read_excel(file_name, engine="openpyxl")
+    file_path = Path("input.xlsx")
+    if not file_path.exists():
+        print(f"Error: {file_path} not found!")
+        return
+    data = pd.read_excel(file_path, engine="openpyxl")
 
     if not check_for_duplicates(data):
         with TkinterContext() as window:
