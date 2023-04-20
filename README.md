@@ -1,17 +1,17 @@
-- [[event-registration](https://github.com/haoxiangliew/event-registration)](#org6889541)
-  - [Installation](#orgc95615f)
-    - [Prerequisites](#orga79f1ae)
-    - [Linux](#org7eee04e)
-    - [Windows](#org85681e9)
-    - [MacOS](#org6b56557)
-  - [Specifications](#orgd154535)
-    - [Scanner](#org4040211)
-    - [IDs](#orgd3662e5)
-    - [Application](#org5b70b51)
+- [[event-registration](https://github.com/haoxiangliew/event-registration)](#org76a5856)
+  - [Installation](#org423e081)
+    - [Prerequisites](#org9a60b7c)
+    - [Linux](#org5636df9)
+    - [Windows](#org24fda82)
+    - [MacOS](#org402a375)
+  - [Specifications](#org968a511)
+    - [Scanner](#orgd0cd029)
+    - [IDs](#org13c8a77)
+    - [Application](#org4714770)
 
 
 
-<a id="org6889541"></a>
+<a id="org76a5856"></a>
 
 # [event-registration](https://github.com/haoxiangliew/event-registration)
 
@@ -20,12 +20,12 @@ This is a custom app for Virgnia Tech student organizations to take in a spreads
 App was made specifically for [IEEE@VT](https://ieee.vt.edu)'s Happy Hour, hello there!
 
 
-<a id="orgc95615f"></a>
+<a id="org423e081"></a>
 
 ## Installation
 
 
-<a id="orga79f1ae"></a>
+<a id="org9a60b7c"></a>
 
 ### Prerequisites
 
@@ -36,7 +36,7 @@ App was made specifically for [IEEE@VT](https://ieee.vt.edu)'s Happy Hour, hello
     -   MacOS: Official Distribution / `brew install python-tk` (Homebrew)
 
 
-<a id="org7eee04e"></a>
+<a id="org5636df9"></a>
 
 ### Linux
 
@@ -48,7 +48,7 @@ python3 main.py
 ```
 
 
-<a id="org85681e9"></a>
+<a id="org24fda82"></a>
 
 ### Windows
 
@@ -60,19 +60,19 @@ python main.py
 ```
 
 
-<a id="org6b56557"></a>
+<a id="org402a375"></a>
 
 ### MacOS
 
 Using the shell, the Linux instructions should work perfectly
 
 
-<a id="orgd154535"></a>
+<a id="org968a511"></a>
 
 ## Specifications
 
 
-<a id="org4040211"></a>
+<a id="orgd0cd029"></a>
 
 ### Scanner
 
@@ -87,7 +87,7 @@ Using the shell, the Linux instructions should work perfectly
         -   Scanner can be inaccurate at times, note scanning speed can't be too fast or too slow.
 
 
-<a id="orgd3662e5"></a>
+<a id="org13c8a77"></a>
 
 ### IDs
 
@@ -96,19 +96,19 @@ Using the shell, the Linux instructions should work perfectly
     -   If for some edge case, there are duplicate IDs, prompt for a name search of those entries.
 
 
-<a id="org5b70b51"></a>
+<a id="org4714770"></a>
 
 ### Application
 
-1.  Dependencies
+-   Dependencies
 
-    ```sh
-    openpyxl
-    pandas
-    tk
-    ```
-    
-    -   Takes in `input.xlsx`, with the first-row as categories.
-        -   Should have no duplicate ID and names.
-    -   Filter input for scanner and manual input automatically.
-    -   `tkinter` popups can be dismissed quickly with `<RET>`.
+```sh
+openpyxl
+pandas
+tk
+```
+
+-   Takes in `input.xlsx`, with the first-row as categories.
+    -   Should have no duplicate ID and names.
+-   Filter input for scanner and manual input automatically.
+-   `tkinter` popups can be dismissed quickly with `<RET>`.

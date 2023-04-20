@@ -45,7 +45,7 @@ Using the shell, the Linux instructions should work perfectly
 - Presume the last 4-digits are unique.
   - If for some edge case, there are duplicate IDs, prompt for a name search of those entries.
 *** Application
-**** Dependencies
+- Dependencies
 #+BEGIN_SRC sh
   openpyxl
   pandas
