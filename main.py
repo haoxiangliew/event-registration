@@ -11,6 +11,13 @@ class TicketCategory(Enum):
     TWO_NON_ALCOHOLIC = "2 non-alcoholic drink tickets"
 
 
+TICKET_CATEGORIES = {
+    TicketCategory.TWO_ALCOHOLIC.value: "2 Alcoholic Tickets",
+    TicketCategory.ONE_ALCOHOLIC_ONE_NON_ALCOHOLIC.value: "1 Alcoholic and 1 Non-Alcoholic Tickets",
+    TicketCategory.TWO_NON_ALCOHOLIC.value: "2 Non-Alcoholic Tickets",
+}
+
+
 class TkinterContext:
     def __init__(self):
         self.window = tk.Tk()
@@ -62,21 +69,17 @@ def center_window(window: tk.Tk) -> None:
 
 
 def get_ticket_category(tickets: str) -> str:
-    ticket_categories = {
-        TicketCategory.TWO_ALCOHOLIC.value: "2 Alcoholic Tickets",
-        TicketCategory.ONE_ALCOHOLIC_ONE_NON_ALCOHOLIC.value: "1 Alcoholic and 1 Non-Alcoholic Tickets",
-        TicketCategory.TWO_NON_ALCOHOLIC.value: "2 Non-Alcoholic Tickets",
-    }
-    return ticket_categories.get(tickets, "Unknown Ticket Category")
+    return TICKET_CATEGORIES.get(tickets, "Unknown Ticket Category")
 
 
 def validate_ticket_categories(data: pd.DataFrame) -> int:
     valid_categories = [category.value for category in TicketCategory]
-    ticket_enum = enumerate(data["Tickets"])
-    for index, category in ticket_enum:
-        if category not in valid_categories:
-            return index
-    return -1
+    invalid_categories = [
+        index
+        for index, category in enumerate(data["Tickets"])
+        if category not in valid_categories
+    ]
+    return invalid_categories[0] if invalid_categories else -1
 
 
 def display_name_popup(name: str, id_number: int, tickets: str) -> None:
