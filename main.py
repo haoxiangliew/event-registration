@@ -171,7 +171,7 @@ def main():
 
                 if registered != "Yes":
                     display_name_popup(name, id_number, tickets)
-                    mark_as_registered(data, file_name, row_index)
+                    mark_as_registered(data, file_path, row_index)
                 else:
                     display_already_registered_error(name, id_number)
 
