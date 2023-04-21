@@ -2,6 +2,13 @@ import pandas as pd
 import tkinter as tk
 from tkinter import messagebox
 from pathlib import Path
+from enum import Enum
+
+
+class TicketCategory(Enum):
+    TWO_ALCOHOLIC = "2 alcoholic drink tickets"
+    ONE_ALCOHOLIC_ONE_NON_ALCOHOLIC = "1 non-alcoholic drink and 1 alcoholic drink"
+    TWO_NON_ALCOHOLIC = "2 non-alcoholic drink tickets"
 
 
 class TkinterContext:
@@ -16,7 +23,7 @@ class TkinterContext:
         self.window.destroy()
 
 
-def check_for_duplicates(data):
+def check_for_duplicates(data: pd.DataFrame) -> bool:
     duplicate_ids = data.duplicated(subset=["ID Number"], keep=False)
     duplicate_names = data.duplicated(subset=["Name"], keep=False)
     if duplicate_ids.any() and duplicate_names.any():
@@ -27,7 +34,7 @@ def check_for_duplicates(data):
     return True
 
 
-def extract_id_number(input_str):
+def extract_id_number(input_str: str) -> int:
     if input_str[0] == ";":
         id_number_str = input_str[6:10]
     else:
@@ -35,16 +42,16 @@ def extract_id_number(input_str):
     return int(id_number_str)
 
 
-def find_name_by_id(data, id_number):
+def find_name_by_id(data: pd.DataFrame, id_number: int) -> pd.DataFrame:
     return data.loc[data["ID Number"] == id_number]
 
 
-def mark_as_registered(data, file_name, row_index):
+def mark_as_registered(data: pd.DataFrame, file_name: Path, row_index: int) -> None:
     data.at[row_index, "Registered"] = "Yes"
     data.to_excel(file_name, index=False, engine="openpyxl")
 
 
-def center_window(window):
+def center_window(window: tk.Tk) -> None:
     window.update_idletasks()
     width = window.winfo_width()
     height = window.winfo_height()
@@ -53,28 +60,24 @@ def center_window(window):
     window.geometry(f"{width}x{height}+{x}+{y}")
 
 
-def get_ticket_category(tickets):
+def get_ticket_category(tickets: str) -> str:
     ticket_categories = {
-        "2 alcoholic drink tickets": "2 Alcoholic Tickets",
-        "1 non-alcoholic drink and 1 alcoholic drink": "1 Alcoholic and 1 Non-Alcoholic Tickets",
-        "2 non-alcoholic drink tickets": "2 Non-Alcoholic Tickets",
+        TicketCategory.TWO_ALCOHOLIC.value: "2 Alcoholic Tickets",
+        TicketCategory.ONE_ALCOHOLIC_ONE_NON_ALCOHOLIC.value: "1 Alcoholic and 1 Non-Alcoholic Tickets",
+        TicketCategory.TWO_NON_ALCOHOLIC.value: "2 Non-Alcoholic Tickets",
     }
     return ticket_categories.get(tickets, "Unknown Ticket Category")
 
 
-def validate_ticket_categories(data):
-    valid_categories = [
-        "2 alcoholic drink tickets",
-        "1 non-alcoholic drink and 1 alcoholic drink",
-        "2 non-alcoholic drink tickets",
-    ]
+def validate_ticket_categories(data: pd.DataFrame) -> int:
+    valid_categories = [category.value for category in TicketCategory]
     for index, category in enumerate(data["Tickets"]):
         if category not in valid_categories:
             return index
     return -1
 
 
-def display_name_popup(name, id_number, tickets):
+def display_name_popup(name: str, id_number: int, tickets: str) -> None:
     with TkinterContext() as window:
         center_window(window)
         ticket_category = get_ticket_category(tickets)
@@ -85,28 +88,26 @@ def display_name_popup(name, id_number, tickets):
         )
 
 
-def display_already_registered_error(name, id_number):
+def display_already_registered_error(name: str, id_number: int) -> None:
     with TkinterContext() as window:
         center_window(window)
         window.bell()
-        result = messagebox.showerror(
+        messagebox.showerror(
             "Error",
             f"ID: {id_number}\nName: {name}\nError: Already registered!",
             parent=window,
         )
-        return result
 
 
-def display_id_not_found_error(id_number):
+def display_id_not_found_error(id_number: int) -> None:
     with TkinterContext() as window:
-        if window.winfo_exists():
-            center_window(window)
-            window.bell()
-            messagebox.showerror(
-                "Error",
-                f"ID: {id_number}\nError: ID not found!",
-                parent=window,
-            )
+        center_window(window)
+        window.bell()
+        messagebox.showerror(
+            "Error",
+            f"ID: {id_number}\nError: ID not found!",
+            parent=window,
+        )
 
 
 def main():
@@ -114,7 +115,11 @@ def main():
     if not file_path.exists():
         print(f"Error: {file_path} not found!")
         return
-    data = pd.read_excel(file_path, engine="openpyxl")
+    try:
+        data = pd.read_excel(file_path, engine="openpyxl")
+    except Exception as e:
+        print(f"Error: Unable to read the Excel file. {e}")
+        return
 
     if not check_for_duplicates(data):
         with TkinterContext() as window:
