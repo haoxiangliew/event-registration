@@ -17,6 +17,7 @@ class TkinterContext:
         self.window.withdraw()
 
     def __enter__(self):
+        center_window(self.window)
         return self.window
 
     def __exit__(self, exc_type, exc_val, exc_tb):
@@ -43,7 +44,7 @@ def extract_id_number(input_str: str) -> int:
 
 
 def find_name_by_id(data: pd.DataFrame, id_number: int) -> pd.DataFrame:
-    return data.loc[data["ID Number"] == id_number]
+    return data[data["ID Number"] == id_number]
 
 
 def mark_as_registered(data: pd.DataFrame, file_name: Path, row_index: int) -> None:
@@ -71,7 +72,8 @@ def get_ticket_category(tickets: str) -> str:
 
 def validate_ticket_categories(data: pd.DataFrame) -> int:
     valid_categories = [category.value for category in TicketCategory]
-    for index, category in enumerate(data["Tickets"]):
+    ticket_enum = enumerate(data["Tickets"])
+    for index, category in ticket_enum:
         if category not in valid_categories:
             return index
     return -1
@@ -79,7 +81,6 @@ def validate_ticket_categories(data: pd.DataFrame) -> int:
 
 def display_name_popup(name: str, id_number: int, tickets: str) -> None:
     with TkinterContext() as window:
-        center_window(window)
         ticket_category = get_ticket_category(tickets)
         messagebox.showinfo(
             "Info",
@@ -90,7 +91,6 @@ def display_name_popup(name: str, id_number: int, tickets: str) -> None:
 
 def display_already_registered_error(name: str, id_number: int) -> None:
     with TkinterContext() as window:
-        center_window(window)
         window.bell()
         messagebox.showerror(
             "Error",
@@ -101,7 +101,6 @@ def display_already_registered_error(name: str, id_number: int) -> None:
 
 def display_id_not_found_error(id_number: int) -> None:
     with TkinterContext() as window:
-        center_window(window)
         window.bell()
         messagebox.showerror(
             "Error",
@@ -123,7 +122,6 @@ def main():
 
     if not check_for_duplicates(data):
         with TkinterContext() as window:
-            center_window(window)
             window.bell()
             messagebox.showerror(
                 "Error",
