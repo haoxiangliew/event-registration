@@ -44,7 +44,7 @@ def extract_id_number(input_str: str) -> int:
 
 
 def find_name_by_id(data: pd.DataFrame, id_number: int) -> pd.DataFrame:
-    return data[data["ID Number"] == id_number]
+    return data.loc[data["ID Number"] == id_number]
 
 
 def mark_as_registered(data: pd.DataFrame, file_name: Path, row_index: int) -> None:
@@ -115,7 +115,8 @@ def main():
         print(f"Error: {file_path} not found!")
         return
     try:
-        data = pd.read_excel(file_path, engine="openpyxl")
+        with pd.ExcelFile(file_path, engine="openpyxl") as xls:
+            data = pd.read_excel(xls)
     except Exception as e:
         print(f"Error: Unable to read the Excel file. {e}")
         return
