@@ -48,7 +48,7 @@ def check_for_duplicates(data: pd.DataFrame) -> bool:
 
 # extract id number from input string
 def extract_id_number(input_str: str) -> int:
-    if input_str[0] == ";":
+    if input_str.startswith(";90") and input_str.endswith("=0249?"):
         id_number_str = input_str[6:10]
     else:
         id_number_str = input_str
