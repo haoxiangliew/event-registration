@@ -18,14 +18,14 @@ App was made specifically for [[https://ieee.vt.edu][IEEE@VT]]'s Happy Hour, hel
   python3 -m venv ./venv
   source ./venv/bin/activate
   pip3 install -r requirements.txt
-  python3 main.py
+  python3 main.py / main-gui.py
 #+END_SRC
 *** Windows
 #+BEGIN_SRC sh
   python -m venv ./venv
   .\venv\Scripts\Activate.ps1
   pip install -r requirements.txt
-  python main.py
+  python main.py / main-gui.py
 #+END_SRC
 *** MacOS
 Using the shell, the Linux instructions should work perfectly
@@ -51,6 +51,8 @@ Using the shell, the Linux instructions should work perfectly
   pandas
   tk
 #+END_SRC
+- ~main-gui.py~ is a GUI application (additionally requires ~ttkthemes~).
+  - Feel free to remove that dependency for ~main.py~, the CLI app.
 - Takes in ~input.xlsx~, with the first-row as categories.
   - Should have no duplicate ID and names.
 - Filter input for scanner and manual input automatically.

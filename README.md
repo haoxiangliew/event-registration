@@ -1,17 +1,17 @@
-- [[event-registration](https://github.com/haoxiangliew/event-registration)](#org76a5856)
-  - [Installation](#org423e081)
-    - [Prerequisites](#org9a60b7c)
-    - [Linux](#org5636df9)
-    - [Windows](#org24fda82)
-    - [MacOS](#org402a375)
-  - [Specifications](#org968a511)
-    - [Scanner](#orgd0cd029)
-    - [IDs](#org13c8a77)
-    - [Application](#org4714770)
+- [[event-registration](https://github.com/haoxiangliew/event-registration)](#orgc8e4200)
+  - [Installation](#orgb11c843)
+    - [Prerequisites](#orgf6621bd)
+    - [Linux](#orgb8c03e1)
+    - [Windows](#orga45d3ce)
+    - [MacOS](#org07b766e)
+  - [Specifications](#org0adc5ed)
+    - [Scanner](#orgeb9ea08)
+    - [IDs](#orgd6a42cc)
+    - [Application](#orgab15916)
 
 
 
-<a id="org76a5856"></a>
+<a id="orgc8e4200"></a>
 
 # [event-registration](https://github.com/haoxiangliew/event-registration)
 
@@ -20,12 +20,12 @@ This is a custom app for Virgnia Tech student organizations to take in a spreads
 App was made specifically for [IEEE@VT](https://ieee.vt.edu)'s Happy Hour, hello there!
 
 
-<a id="org423e081"></a>
+<a id="orgb11c843"></a>
 
 ## Installation
 
 
-<a id="org9a60b7c"></a>
+<a id="orgf6621bd"></a>
 
 ### Prerequisites
 
@@ -36,7 +36,7 @@ App was made specifically for [IEEE@VT](https://ieee.vt.edu)'s Happy Hour, hello
     -   MacOS: Official Distribution / `brew install python-tk` (Homebrew)
 
 
-<a id="org5636df9"></a>
+<a id="orgb8c03e1"></a>
 
 ### Linux
 
@@ -44,11 +44,11 @@ App was made specifically for [IEEE@VT](https://ieee.vt.edu)'s Happy Hour, hello
 python3 -m venv ./venv
 source ./venv/bin/activate
 pip3 install -r requirements.txt
-python3 main.py
+python3 main.py / main-gui.py
 ```
 
 
-<a id="org24fda82"></a>
+<a id="orga45d3ce"></a>
 
 ### Windows
 
@@ -56,23 +56,23 @@ python3 main.py
 python -m venv ./venv
 .\venv\Scripts\Activate.ps1
 pip install -r requirements.txt
-python main.py
+python main.py / main-gui.py
 ```
 
 
-<a id="org402a375"></a>
+<a id="org07b766e"></a>
 
 ### MacOS
 
 Using the shell, the Linux instructions should work perfectly
 
 
-<a id="org968a511"></a>
+<a id="org0adc5ed"></a>
 
 ## Specifications
 
 
-<a id="orgd0cd029"></a>
+<a id="orgeb9ea08"></a>
 
 ### Scanner
 
@@ -87,7 +87,7 @@ Using the shell, the Linux instructions should work perfectly
         -   Scanner can be inaccurate at times, note scanning speed can't be too fast or too slow.
 
 
-<a id="org13c8a77"></a>
+<a id="orgd6a42cc"></a>
 
 ### IDs
 
@@ -96,7 +96,7 @@ Using the shell, the Linux instructions should work perfectly
     -   If for some edge case, there are duplicate IDs, prompt for a name search of those entries.
 
 
-<a id="org4714770"></a>
+<a id="orgab15916"></a>
 
 ### Application
 
@@ -108,6 +108,8 @@ pandas
 tk
 ```
 
+-   `main-gui.py` is a GUI application (additionally requires `ttkthemes`).
+    -   Feel free to remove that dependency for `main.py`, the CLI app.
 -   Takes in `input.xlsx`, with the first-row as categories.
     -   Should have no duplicate ID and names.
 -   Filter input for scanner and manual input automatically.
