@@ -18,14 +18,14 @@ App was made specifically for [[https://ieee.vt.edu][IEEE@VT]]'s Happy Hour, hel
   python3 -m venv ./venv
   source ./venv/bin/activate
   pip3 install -r requirements.txt
-  python3 main.py / main-gui.py
+  python3 main-gui.py / main.py
 #+END_SRC
 *** Windows
 #+BEGIN_SRC sh
   python -m venv ./venv
   .\venv\Scripts\Activate.ps1
   pip install -r requirements.txt
-  python main.py / main-gui.py
+  python main-gui.py / main.py
 #+END_SRC
 *** MacOS
 Using the shell, the Linux instructions should work perfectly

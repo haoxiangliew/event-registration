@@ -1,17 +1,17 @@
-- [[event-registration](https://github.com/haoxiangliew/event-registration)](#orgc8e4200)
-  - [Installation](#orgb11c843)
-    - [Prerequisites](#orgf6621bd)
-    - [Linux](#orgb8c03e1)
-    - [Windows](#orga45d3ce)
-    - [MacOS](#org07b766e)
-  - [Specifications](#org0adc5ed)
-    - [Scanner](#orgeb9ea08)
-    - [IDs](#orgd6a42cc)
-    - [Application](#orgab15916)
+- [[event-registration](https://github.com/haoxiangliew/event-registration)](#org8660349)
+  - [Installation](#org6b40b75)
+    - [Prerequisites](#orgd4fbd8a)
+    - [Linux](#orgf9c9234)
+    - [Windows](#orge4ffd1f)
+    - [MacOS](#orge809ecd)
+  - [Specifications](#orga554bd4)
+    - [Scanner](#orgf1552aa)
+    - [IDs](#orgf4467c8)
+    - [Application](#org071dbac)
 
 
 
-<a id="orgc8e4200"></a>
+<a id="org8660349"></a>
 
 # [event-registration](https://github.com/haoxiangliew/event-registration)
 
@@ -20,12 +20,12 @@ This is a custom app for Virgnia Tech student organizations to take in a spreads
 App was made specifically for [IEEE@VT](https://ieee.vt.edu)'s Happy Hour, hello there!
 
 
-<a id="orgb11c843"></a>
+<a id="org6b40b75"></a>
 
 ## Installation
 
 
-<a id="orgf6621bd"></a>
+<a id="orgd4fbd8a"></a>
 
 ### Prerequisites
 
@@ -36,7 +36,7 @@ App was made specifically for [IEEE@VT](https://ieee.vt.edu)'s Happy Hour, hello
     -   MacOS: Official Distribution / `brew install python-tk` (Homebrew)
 
 
-<a id="orgb8c03e1"></a>
+<a id="orgf9c9234"></a>
 
 ### Linux
 
@@ -44,11 +44,11 @@ App was made specifically for [IEEE@VT](https://ieee.vt.edu)'s Happy Hour, hello
 python3 -m venv ./venv
 source ./venv/bin/activate
 pip3 install -r requirements.txt
-python3 main.py / main-gui.py
+python3 main-gui.py / main.py
 ```
 
 
-<a id="orga45d3ce"></a>
+<a id="orge4ffd1f"></a>
 
 ### Windows
 
@@ -56,23 +56,23 @@ python3 main.py / main-gui.py
 python -m venv ./venv
 .\venv\Scripts\Activate.ps1
 pip install -r requirements.txt
-python main.py / main-gui.py
+python main-gui.py / main.py
 ```
 
 
-<a id="org07b766e"></a>
+<a id="orge809ecd"></a>
 
 ### MacOS
 
 Using the shell, the Linux instructions should work perfectly
 
 
-<a id="org0adc5ed"></a>
+<a id="orga554bd4"></a>
 
 ## Specifications
 
 
-<a id="orgeb9ea08"></a>
+<a id="orgf1552aa"></a>
 
 ### Scanner
 
@@ -87,7 +87,7 @@ Using the shell, the Linux instructions should work perfectly
         -   Scanner can be inaccurate at times, note scanning speed can't be too fast or too slow.
 
 
-<a id="orgd6a42cc"></a>
+<a id="orgf4467c8"></a>
 
 ### IDs
 
@@ -96,7 +96,7 @@ Using the shell, the Linux instructions should work perfectly
     -   If for some edge case, there are duplicate IDs, prompt for a name search of those entries.
 
 
-<a id="orgab15916"></a>
+<a id="org071dbac"></a>
 
 ### Application
 
