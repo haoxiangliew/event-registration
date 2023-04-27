@@ -5,6 +5,7 @@ from ttkthemes import ThemedTk
 from pathlib import Path
 from enum import Enum
 from typing import Union
+import re
 
 
 # Ticket Categories
@@ -49,7 +50,7 @@ def check_for_duplicates(data: pd.DataFrame) -> bool:
 
 # extract id number from input string
 def extract_id_number(input_str: str) -> int:
-    if input_str.startswith(";90") and input_str.endswith("=0249?"):
+    if re.match(r";90\d{7}=\d{4}\?", input_str):
         id_number_str = input_str[6:10]
     else:
         id_number_str = input_str
@@ -235,7 +236,21 @@ class TicketScannerApp(ThemedTk):
     # enter / submission handler
     def process_input(self, event=None):
         input_str = self.input_entry.get()
-        id_number = extract_id_number(input_str)
+
+        try:
+            id_number = extract_id_number(input_str)
+        except ValueError as e:
+            with TkinterContext() as window:
+                window.bell()
+                show_message(
+                    "Error",
+                    str(e),
+                    window,
+                )
+            self.input_entry.delete(0, tk.END)
+            self.input_entry.focus_set()
+            return
+
         matching_rows = find_name_by_id(data, id_number)
 
         if matching_rows.empty:
