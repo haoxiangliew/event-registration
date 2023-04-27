@@ -53,7 +53,14 @@ def extract_id_number(input_str: str) -> int:
         id_number_str = input_str[6:10]
     else:
         id_number_str = input_str
-    return int(id_number_str)
+
+    # Check if the extracted ID number is a valid integer
+    try:
+        id_number = int(id_number_str)
+    except ValueError:
+        raise ValueError(f"Invalid ID number format: {id_number_str}")
+
+    return id_number
 
 
 # find name by id number
@@ -100,6 +107,8 @@ def show_message(title, message, parent, font_size=14, font_weight="bold"):
 
     # always on top
     top.attributes("-topmost", True)
+    top.grab_set()
+    top.focus_force()
 
     # message
     msg = ttk.Label(top, text=message, font=("TkDefaultFont", font_size, font_weight))
